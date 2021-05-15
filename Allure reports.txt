@@ -1,0 +1,56 @@
+Selenium:
+---------
+
+Pytest:
+1. install > download zip file from maven central
+2. Extract > Bin > Allure.bat
+3. Set system path: copy bin folder location and path (system variable)
+4. pip install allure-pytest
+5. in your tests 
+	import allure
+	from allure_commons.types import AttachmentType
+
+Add Decorators to the test:
+---------------------------
+@allure.severity(allure.severity_level.CRITICAL)
+def test1:
+	code for test
+	
+NORMAL
+BLOCKER
+CRITICAL
+MINOR
+
+Add Sscreenshot on failure:
+---------------------------
+Where failedd,
+	allure.attach(self.driver.getscreenshot_as_png(), 
+					name- 'testfile.png',
+					attachment_type=AttachmentType.PNG)
+					
+AttachmentType is a class.
+(from allure_commons.types import AttachmentType)
+
+How to generate report with test run?
+-------------------------------------
+py -m pytest -s -v --alluredir='location_of_report_folder' (locationoftestfile: testfile.py) 
+
+How to open generated report:
+-----------------------------
+Inially json file are present, so to view it:
+- Copy location of generated report folder
+- run command: 
+--------------
+	allure serve "location folder"
+
+it will generate and the report will open
+
+How to share?
+-------------
+it contains many files so share it via cloud (not official)
+
+netlifi.com
+	- login
+	- deployment area
+	- drag and drop the generated folder
+	- you will get the link
